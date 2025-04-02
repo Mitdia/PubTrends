@@ -1,0 +1,7 @@
+*.ipynb
+/Lib
+/Scripts
+/Include
+/share
+*.cfg
+/__*
