@@ -1,8 +1,9 @@
-from typing import Dict
+from typing import Dict, List
 import numpy as np
 from scipy.sparse import csr_matrix
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.manifold import TSNE
+from sklearn.cluster import KMeans
 
 
 def text_to_vector(text_dict: Dict[str, str]):
@@ -20,3 +21,8 @@ def embed_in_2d(matrix : csr_matrix, perplexity : int = 30) -> np.ndarray:
     )
     return tsne.fit_transform(matrix)
 
+
+def cluster(features : csr_matrix, k : int = 5) -> List[int]:
+    clusterizator = KMeans(k)
+    labels = clusterizator.fit_predict(features)
+    return labels
