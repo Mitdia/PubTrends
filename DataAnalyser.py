@@ -19,7 +19,7 @@ def text_to_vector(text_dict: Dict[str, str]):
 def embed_in_2d(matrix : csr_matrix, perplexity : int = 30) -> np.ndarray:
     tsne = TSNE(
         n_components=2,
-        perplexity=perplexity,
+        perplexity=min(perplexity, matrix.shape[0] - 1),
         init='random', 
     )
     return tsne.fit_transform(matrix)
